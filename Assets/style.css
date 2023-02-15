@@ -224,6 +224,15 @@
 
   }
 
+  
+  .column-left, .column-right {
+    height: 100%;
+  }
+
+  .column-left {
+    overflow-y: scroll;
+  }
+
   .card-section .pill {
     border: 0;
     box-shadow: none;
