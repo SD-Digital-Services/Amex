@@ -6,16 +6,14 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="./Assets/normalize.css" />
     <link rel="stylesheet" href="./Assets/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   </head>
   <body>
-    
+
     <header>
       <h1 class="header-text primary-title text-drkblue">
-        See Your Business Travel As a Bigger Asset and Smaller Expense
+       Test Your Business Travel As a Bigger Asset and Smaller Expense
       </h1>
     </header>
  
@@ -202,30 +200,31 @@
 
         </div>
         <div class="column-right ">
-          <br /><br />
-          <img src="./Assets/images/01-scrollable_sidebar_img.png" alt="Start here" />
-          <br />
-          <img src="./Assets/images/02-scrollable_sidebar_img.png" alt="The internal event is set, and your team starts committing" />
-          <br />
-          <img src="./Assets/images/03-scrollable_sidebar_img.png" alt="" />
-          <br />
-          <img src="./Assets/images/04-scrollable_sidebar_img.png" alt="With Amex GBT: The search begins for flights, rental cars, and hotels through our Amex GBT online tools. Without Amex GBT: Your team members begin searching for flights, rental cars, and hotels on their own without preapprovals for trip cost, reason, or lengevity" />
-          <br />
-          <img src="./Assets/images/05-scrollable_sidebar_img.png" alt="With Amex GBT:Through the benefits offered to our large clients, our tools reflect preloaded savings for your team to travel, transport and stay comfortably. Without Amex GBT: Your team members begin booking arrangements based on individual preferences and current costs." />
-          <br />
-          <img src="./Assets/images/06-scrollable_sidebar_img.png" alt="With Amex GBT: Your travel arrangements are booked and compliant within your business's travel polices. Without Amex GBT: Travel arrangements are submitted at varying costs across individually preferred travel vendors, often against your company's travel policies." />
-          <br />
-          <a href="#ref-3"><img src="./Assets/images/07-scrollable_sidebar_img.png" alt="With Amex GBT: Your team's travel saves you up to 25% on airfare, 30% on car rentals, and 50% on hotels while you still receive vendor points and perks. Without Amex GBT: Your team submits invoices at accessible rates, and you face tail-end spend overages without visibility into individual travel costs." /></a>
-          <br />
-          <img src="./Assets/images/08-scrollable_sidebar_img.png" alt="With Amex GBT: In the case of an event change or disruption, you can monitor or alter travel plans, often with no additional cost and the priceless peace of mind from knowing where and how your travelers are. Without Amex GBT: Travel delays or cancelations are handled by the individual, using your interal resources to remedy in real time. Not knowing where your team is leaves you vulnerable to substantial duty of care risks." />
-          <br />
-          <img src="./Assets/images/09-scrollable_sidebar_img.png" alt="With Amex GBT: It's clear skies ahead for the trip, and your company's travel budget. Without Amex GBT: Your business trip creates strain on individuals and financial goals." />
-          <br />
-          <img id="" src="./Assets/images/10-scrollable_sidebar_img.png" alt="You can arrive at travel savings with Amex GBT." />
+          <img id="img-1" src="./Assets/images/01-scrollable_sidebar_img.png" alt="Start here" />
+
+          <img id="img-2" src="./Assets/images/02-scrollable_sidebar_img.png" alt="The internal event is set, and your team starts committing" />
+          
+          <img id="img-3" src="./Assets/images/03-scrollable_sidebar_img.png" alt="" />
+         
+          <img id="img-4" src="./Assets/images/04-scrollable_sidebar_img.png" alt="With Amex GBT: The search begins for flights, rental cars, and hotels through our Amex GBT online tools. Without Amex GBT: Your team members begin searching for flights, rental cars, and hotels on their own without preapprovals for trip cost, reason, or lengevity" />
+        
+          <img id="img-5" src="./Assets/images/05-scrollable_sidebar_img.png" alt="With Amex GBT:Through the benefits offered to our large clients, our tools reflect preloaded savings for your team to travel, transport and stay comfortably. Without Amex GBT: Your team members begin booking arrangements based on individual preferences and current costs." />
+      
+          <img id="img-6" src="./Assets/images/06-scrollable_sidebar_img.png" alt="With Amex GBT: Your travel arrangements are booked and compliant within your business's travel polices. Without Amex GBT: Travel arrangements are submitted at varying costs across individually preferred travel vendors, often against your company's travel policies." />
+        
+          <a href="#ref-3"><img id="img-7" src="./Assets/images/07-scrollable_sidebar_img.png" alt="With Amex GBT: Your team's travel saves you up to 25% on airfare, 30% on car rentals, and 50% on hotels while you still receive vendor points and perks. Without Amex GBT: Your team submits invoices at accessible rates, and you face tail-end spend overages without visibility into individual travel costs." /></a>
+       
+          <img id="img-8" src="./Assets/images/08-scrollable_sidebar_img.png" alt="With Amex GBT: In the case of an event change or disruption, you can monitor or alter travel plans, often with no additional cost and the priceless peace of mind from knowing where and how your travelers are. Without Amex GBT: Travel delays or cancelations are handled by the individual, using your interal resources to remedy in real time. Not knowing where your team is leaves you vulnerable to substantial duty of care risks." />
+     
+          <img id="img-9" src="./Assets/images/09-scrollable_sidebar_img.png" alt="With Amex GBT: It's clear skies ahead for the trip, and your company's travel budget. Without Amex GBT: Your business trip creates strain on individuals and financial goals." />
+        
+          <img id="img-10" src="./Assets/images/10-scrollable_sidebar_img.png" alt="You can arrive at travel savings with Amex GBT." />
         </div>
       </div>
+  <div id="dummy-space"></div>
+      
 
-      <div class="bg-lgtblue" style="padding-top: 70px">
+      <div class="bg-lgtblue hide" style="padding-top: 70px">
         <div class="outro-section">
             <img
             src="./Assets/images/amex-closing-img.png"
@@ -256,7 +255,7 @@
       </div>
 
 
-      <div class="bg-drkblue clearfix desktop-only" style="padding-top: 50px">
+      <div class="bg-drkblue clearfix desktop-only hide" style="padding-top: 50px">
         <div class="outro-section">
           <div class="text-white">
             <h2 class="secondary-title center-text">You’re ready to take the next step.</h2>
@@ -564,7 +563,8 @@
 
     </main>
     
-    <script src="./Assets/smooth-scrollbar.js"></script>
+
+    <!-- <script src="./Assets/smooth-scrollbar.js"></script>
 
     <script>
       var Scrollbar = window.Scrollbar;
@@ -573,7 +573,7 @@
         'damping' : 0.05
       }
     
-      Scrollbar.init(document.querySelector('#my-scrollbar'), options);
+      Scrollbar.init(document.querySelector('#my-scrollbar'), options); -->
     </script>
     <script src="./Assets/script.js"></script>
     <script type="text/javascript">
