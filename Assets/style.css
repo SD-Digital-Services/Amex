@@ -2,56 +2,56 @@
   /* BentonSans Font */
   @font-face {
     font-family: "BentonSans";
-    src: url('/Assets/fonts/Benton\ Sans/BentonSans-Bold.otf') format('otf');
+    src: url('fonts/BentonSans/BentonSans-Bold.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
   }
   /* BentonSans Font */
   @font-face {
     font-family: "BentonSans";
-    src: url('/Assets/fonts/Benton\ Sans/BentonSans-Book.otf') format('otf');
+    src: url('fonts/BentonSans/BentonSans-Book.otf') format('opentype');
     font-weight: 390;
     font-style: normal;
   }
     /* BentonSans Font */
     @font-face {
       font-family: "BentonSans";
-      src: url('/Assets/fonts/Benton\ Sans/BentonSans-ExtraLight') format('otf');
+      src: url('fonts/BentonSans/BentonSans-ExtraLight.otf') format('opentype');
       font-weight: 300;
       font-style: light;
     }
   /* BentonSans Font */
   @font-face {
     font-family: "BentonSans";
-    src: url('/Assets/fonts/Benton\ Sans/BentonSans-Medium.otf') format('otf');
+    src: url('fonts/BentonSans/BentonSans-Medium.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
   }
   /* BentonSans Font */
   @font-face {
     font-family: "BentonSans";
-    src: url('/Assets/fonts/Benton\ Sans/BentonSans/BentonSans-ExtraLight.otf') format('otf');
+    src: url('fonts/BentonSans/BentonSans-ExtraLight.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
   }
   /* Guardian Font */
   @font-face {
   font-family: "Guardian Egyp";
-  src: url('/Assets/fonts/guardian_egyptian_headline/GuardianEgyp-Regular.otf') format('otf');
+  src: url('fonts/guardian_egyptian_headline/GuardianEgyp-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   }
   /* Guardian Font */
   @font-face {
   font-family: "Guardian Egyp";
-  src: url('/Assets/fonts/guardian_egyptian_headline/GuardianEgyp-Bold.otf') format('otf');
+  src: url('fonts/guardian_egyptian_headline/GuardianEgyp-Bold.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   }
   /* Guardian Font */
   @font-face {
   font-family: "Guardian Egyp";
-  src: url('/Assets/fonts/guardian_egyptian_headline/GuardianEgyp-Light.otf') format('otf');
+  src: url('fonts/guardian_egyptian_headline/GuardianEgyp-Light.otf') format('opentype');
   font-weight:300;
   font-style: light;
   }
