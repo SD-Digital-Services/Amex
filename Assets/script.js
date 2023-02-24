@@ -9,115 +9,143 @@ function clicksButton() {
 
 }
 
-var hoverRightColumn = false;
-var curScroll = 0; //initialize var that handles right column's scroll
+// Defining global variables
+let colLeft = document.querySelector('.column-left');
+let colRight = document.querySelector('.column-right');
+let hideElements = document.querySelectorAll('.hide');
+let formDesktop = document.querySelector("#form-desktop");
+let formBox = document.querySelector("#form-box");
 
-//Determine whether column left is at the bottom 
-let endColumnLeft = document.getElementById('end-column-left');
+let leftHeight = colLeft.scrollHeight;
+let rightHeight = colRight.scrollHeight;
 
-let columnLeftIsScrolled = false;
+let leftReachedBottom = false;
+let rightReachedBottom = false;
+let leftReachedTop = true;
+let rightReachedTop = true;
 
-let columnRight = document.querySelector('.column-right');
-let columnRightHeight = columnRight.scrollHeight - columnRight.clientHeight; //subtract the height of the visible area
+let touchScreen = false;
+let scrollDown = false;
 
-let observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      console.log('end-column-left is in the viewport');
-      columnLeftIsScrolled = true;
-    } else {
-      console.log('end-column-left is NO longer in the viewport');
-      columnLeftIsScrolled = false;
+let touchPos;
+
+// ***Adding tablet compatibility***
+// store the touching position at the start of each touch
+document.body.ontouchstart = function(e){
+    touchPos = e.changedTouches[0].clientY;
+}
+
+// detect wether the "old" touchPos is 
+// greater or smaller than the newTouchPos
+document.body.ontouchmove = function(e){
+    let newTouchPos = e.changedTouches[0].clientY;
+    if(newTouchPos < touchPos) {
+        scrollDown = true;
     }
+}
 
-    if (columnLeftIsScrolled === true) {
-      console.log('Column left is scrolled');
-      var isScrollingEnabled = false;
+// Checking whether columns reached bottom everytime user scrolls
+function checkScrollLeft() {
+  if (!leftReachedBottom && (10 + colLeft.scrollTop + colLeft.offsetHeight) >= leftHeight) {
+    leftReachedBottom = true;
+  }
 
-      function controlScroll(e) {
-        var evt = window.event || e;
-        var delta = evt.detail ? evt.detail * (0) : evt.wheelDelta;
-        if (delta < 0) {
-          //scroll down
-          curScroll += 50;
-        } else if (delta > 0) {
-          //scroll up
-          if (document.querySelector('.column-left:hover')) {
-            //mouse is over the column-left element
-            columnRight.scrollTo({
-              top: 0,
-              behavior: "smooth"
-            });
-            curScroll = 0; //reset curScroll to 0
-          } else if (document.querySelector('.column-right:hover') && columnLeftIsScrolled) {
-            //mouse is over the column-right element and endColumnLeft is in the viewport
-            curScroll -= 50;
-          }
-        }
-        if (columnLeftIsScrolled) {
-          curScroll = Math.min(curScroll, columnRightHeight);
-          curScroll = Math.max(curScroll, 0);
-          columnRight.scrollTo({
-            top: curScroll,
-            behavior: "smooth"
-          });
-        }
-      }
-      
-      
-      
+  if (leftReachedBottom && colLeft.scrollTop + colLeft.offsetHeight < leftHeight) {
+    leftReachedBottom = false;
+  }
 
-      document.addEventListener("mousemove", function () {
-        if (document.querySelector(".column-right:hover")) {
-          console.log('Mouse is over the right column now');
-          if (isScrollingEnabled) {
-            document.removeEventListener("mousewheel", controlScroll);
-            isScrollingEnabled = false;
-          }
-        } else {
-          console.log('Mouse is not over the right column now');
-          if (!isScrollingEnabled) {
-            document.addEventListener("mousewheel", controlScroll);
-            isScrollingEnabled = true;
-          }
-        }
-      });
+  if (!rightReachedBottom && (10 + colRight.scrollTop + colRight.offsetHeight) >= rightHeight) {
+    rightReachedBottom = true;
+  }
+
+  if (rightReachedBottom && colRight.scrollTop + colRight.offsetHeight < rightHeight) {
+    rightReachedBottom = false;
+  }
+
+}
+
+document.addEventListener('wheel', checkScrollLeft);
+document.body.addEventListener('touchmove', checkScrollLeft);
+
+//Prevent multiple scroll events
+function throttleLeft(fn, wait) {
+  var time = Date.now();
+
+  return function(event) {
+    
+    // we dismiss every wheel event with deltaY less than 4
+    if (Math.abs(event.deltaY) < 4) return
+
+    if ((time + wait - Date.now()) < 0) {
+      fn(event);
+      time = Date.now();
     }
+  }
+}
 
-  });
-});
+//Trigger scroll on the opposite column if conditions met
+function callbackLeft(event) {
+  if (leftReachedBottom === true && event.deltaY > 4 || leftReachedBottom === true && scrollDown === true) {
+  $(colRight).animate({'scrollTop': '+=500'});
+}
+}
 
-observer.observe(endColumnLeft);
+function throttleRight(fn, wait) {
+  var time = Date.now();
 
-let endColumnRight = document.getElementById('end-column-right');
-let columnRightIsScrolled = false;
+  return function(event) {
+    // we dismiss every wheel event with deltaY less than 4
+    if (Math.abs(event.deltaY) < 4) return
 
-let observerRight = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        console.log('end-column-right is in the viewport');
-        columnRightIsScrolled = true;
-      } else {
-        console.log('end-column-right is NO longer in the viewport');
-        columnRightIsScrolled = false;
-      }
-  
-      if (columnRightIsScrolled === true) {
-        console.log('Column right is scrolled');
+    if ((time + wait - Date.now()) < 0) {
+      fn(event);
+      time = Date.now();
+    }
+  }
+}
 
-      }
+function callbackRight(event) {
+  if (rightReachedBottom === true && event.deltaY > 4 || rightReachedBottom === true && scrollDown === true) {
+  $(colLeft).animate({'scrollTop': '+=500'});
+}
+}
+
+colLeft.addEventListener("wheel", throttleLeft(callbackLeft, 500));
+colRight.addEventListener("wheel", throttleRight(callbackRight, 500));
+
+colLeft.addEventListener("touchmove", throttleLeft(callbackLeft, 500));
+colRight.addEventListener("touchmove", throttleRight(callbackRight, 500));
+
+// If both columns reached the bottom, unlock section
+function unlockSection(){
+  if (rightReachedBottom && leftReachedBottom) {
+    hideElements.forEach(element => {
+      element.classList.remove('hide');
     });
-});
-  
+  }
+}
 
-observerRight.observe(endColumnRight);
+window.addEventListener("wheel", unlockSection);
+window.addEventListener("touchmove", unlockSection);
 
+function checkScreenSize() {
+  if (window.innerWidth < 769) {
+    formDesktop.remove();
+ leftHeight = colLeft.scrollHeight;
+ rightHeight = colRight.scrollHeight;
+  } else {
 
-setInterval(() => {
-    if (columnRightIsScrolled === true && columnRightIsScrolled === true) {
-      const hideElements = document.querySelectorAll(".hide");
-      hideElements.forEach(element => element.classList.remove("hide"));
+    leftHeight = colLeft.scrollHeight;
+    rightHeight = colRight.scrollHeight;
+    // Add the form-desktop element back if it was previously removed
+    if (!formDesktop.parentNode) {
+
     }
-  }, 200);
-  
-  
+  }
+}
+
+// Check the screen size on page load
+checkScreenSize();
+
+// Add an event listener for changes in screen size
+window.addEventListener("resize", checkScreenSize);

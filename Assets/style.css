@@ -2,56 +2,56 @@
   /* BentonSans Font */
   @font-face {
     font-family: "BentonSans";
-    src: url('/Assets/fonts/Benton\ Sans/BentonSans-Bold.otf') format('otf');
+    src: url('fonts/BentonSans/BentonSans-Bold.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
   }
   /* BentonSans Font */
   @font-face {
     font-family: "BentonSans";
-    src: url('/Assets/fonts/Benton\ Sans/BentonSans-Book.otf') format('otf');
+    src: url('fonts/BentonSans/BentonSans-Book.otf') format('opentype');
     font-weight: 390;
     font-style: normal;
   }
     /* BentonSans Font */
     @font-face {
       font-family: "BentonSans";
-      src: url('/Assets/fonts/Benton\ Sans/BentonSans-ExtraLight') format('otf');
+      src: url('fonts/BentonSans/BentonSans-ExtraLight.otf') format('opentype');
       font-weight: 300;
       font-style: light;
     }
   /* BentonSans Font */
   @font-face {
     font-family: "BentonSans";
-    src: url('/Assets/fonts/Benton\ Sans/BentonSans-Medium.otf') format('otf');
+    src: url('fonts/BentonSans/BentonSans-Medium.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
   }
   /* BentonSans Font */
   @font-face {
     font-family: "BentonSans";
-    src: url('/Assets/fonts/Benton\ Sans/BentonSans/BentonSans-ExtraLight.otf') format('otf');
+    src: url('fonts/BentonSans/BentonSans-ExtraLight.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
   }
   /* Guardian Font */
   @font-face {
   font-family: "Guardian Egyp";
-  src: url('/Assets/fonts/guardian_egyptian_headline/GuardianEgyp-Regular.otf') format('otf');
+  src: url('fonts/guardian_egyptian_headline/GuardianEgyp-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   }
   /* Guardian Font */
   @font-face {
   font-family: "Guardian Egyp";
-  src: url('/Assets/fonts/guardian_egyptian_headline/GuardianEgyp-Bold.otf') format('otf');
+  src: url('fonts/guardian_egyptian_headline/GuardianEgyp-Bold.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   }
   /* Guardian Font */
   @font-face {
   font-family: "Guardian Egyp";
-  src: url('/Assets/fonts/guardian_egyptian_headline/GuardianEgyp-Light.otf') format('otf');
+  src: url('fonts/guardian_egyptian_headline/GuardianEgyp-Light.otf') format('opentype');
   font-weight:300;
   font-style: light;
   }
@@ -59,6 +59,11 @@
   * {
     box-sizing: border-box;
   }
+
+  html, body {
+    overscroll-behavior: none;
+  }
+
   
   body {
     font-family: 'BentonSans',sans-serif, sans-serif;
@@ -68,7 +73,8 @@
     background-color: white;
     margin: 0;
   }
-  
+
+ 
   #my-scrollbar {
     overflow: auto;
     background-color: #006fcf;
@@ -204,7 +210,7 @@
 
   .two-column {
     margin-bottom: 0rem;
-    min-height: 100vh;
+    min-height: calc(98vh + 0.1px);
   }
 
   .card-section {
@@ -222,6 +228,15 @@
   .card-section .section-left, .card-section .section-right {
     width: 100%;
 
+  }
+
+  
+  .column-left, .column-right {
+    height: 100%;
+  }
+
+  .column-left {
+    overflow-y: scroll;
   }
 
   .card-section .pill {
@@ -311,18 +326,16 @@
     width: 30px;
     margin-left: 16px;
   }
-
-
   
   .column-left {
     width: 74%;
-    max-height: 100vh;
+    max-height: 98vh;
     -ms-overflow-style: none;
     scrollbar-width: none;
     overflow-y: scroll;
     float: left;
     background-color: #fff;
-
+    border-bottom: solid 1px transparent;
   }
   .column-left::-webkit-scrollbar {
     display: none;
@@ -334,15 +347,16 @@
 
   .column-right {
     width: 26%;
-    max-height: 100vh;
+    max-height: 98vh;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
     float: right;
-    padding: 0rem 3rem 6rem;
+    padding: 1rem 1rem 6rem 1rem;
     margin: 0 auto;
     background-color: #00185a;
     color: #fff;
+    border-bottom: solid 1px transparent;
   }
   .column-right::-webkit-scrollbar {
     display: none; 
@@ -350,6 +364,10 @@
   .column-right img {
     width: 100%;
     max-width: 396px;
+  }
+
+  #img-10 {
+    padding-bottom: 1rem;
   }
 
   .content-card {
@@ -361,10 +379,6 @@
   }
   .content-card .section-left .subscript:first-child {
     margin-bottom: 26px;
-  }
-
-  .content-card .section-left .subscript:last-child {
-    
   }
 
   .content-card .card-number {
@@ -383,8 +397,6 @@
   }
   .content-card ul li{
     font-size: 18px;
-  }
-  .content-card .section-right {
   }
 
   .blue-pill{
@@ -447,6 +459,10 @@
     top: -9999px;
     left: -9999px;
   }
+
+  #dummy-space {
+    height: 0.1px;
+  }
   
 /* Portrait and Landscape iPad*/
 @media only screen and (min-width: 2000px) and 
@@ -467,7 +483,7 @@
       width: 60%; 
     }*/
     .column-right {
-      padding: 0rem 1rem 5rem 1rem !important;
+      padding: 1rem 1rem 6rem 1rem !important;
     }
     header, .inner-header {
       background-position: top;
@@ -511,10 +527,18 @@
   .content-card .card-number {
     font-size: 66px;
   }
-  
-  .column-right{
-    padding: 0rem 1rem;
+
+  .blue-card-section .section-left {
+    margin-right: 1rem;
   }
+
+  .blue-card-section {
+    gap: unset;
+  }
+  
+  /* .column-right{
+    padding: 1rem 1rem;
+  } */
 
   .subscript {
     font-size: 20px;
